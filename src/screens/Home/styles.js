@@ -7,5 +7,5 @@ export const Container = styled.View`
 export const ListItemSeparator = styled.View`
   height: 15px;
   width: 100%;
-  background-color: red;
+  background-color: #212121;
 `;
