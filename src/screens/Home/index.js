@@ -67,12 +67,7 @@ const Home = () => {
           onEndReached={loadMorePosts}
           onEndReachedThreshold={0.4}
           renderItem={({item}) => <Post post={item} />}
-          ListFooterComponent={() => {
-            if (isLoading) {
-              return <Loader />;
-            }
-            return <></>;
-          }}
+          ListFooterComponent={isLoading ? <Loader /> : <></>}
         />
       )}
     </Container>
