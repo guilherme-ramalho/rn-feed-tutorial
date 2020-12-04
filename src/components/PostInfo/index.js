@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 
 import {
@@ -19,9 +19,9 @@ const PostInfo = ({post}) => {
   return (
     <Container>
       <PostButtons>
-        <Icon name="heart-outline" size={24} color="#fff" />
-        <Icon name="chat-outline" size={24} color="#fff" />
-        <Icon name="star-outline" size={24} color="#fff" />
+        <Icon name="heart" size={24} color="#fff" />
+        <Icon name="comment" size={24} color="#fff" />
+        <Icon name="share" size={24} color="#fff" />
       </PostButtons>
       <PostSeparator />
       <Row>

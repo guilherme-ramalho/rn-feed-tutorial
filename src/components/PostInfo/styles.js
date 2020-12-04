@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  padding: 5px 10px;
+  padding: 10px 10px;
   justify-content: space-evenly;
   flex-direction: column;
 `;
@@ -10,6 +10,7 @@ export const PostButtons = styled.View`
   flex-direction: row;
   max-width: 90px;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const LikesText = styled.Text`
