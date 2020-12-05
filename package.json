@@ -6,10 +6,12 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "release": "react-native run-android --variant release --verbose",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
+    "lottie-react-native": "^3.5.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-native": "0.63.3",

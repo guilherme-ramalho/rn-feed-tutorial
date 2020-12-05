@@ -14,7 +14,15 @@ export const UserImage = styled.Image`
 `;
 
 export const UserImageWrapper = styled(LinearGradient).attrs({
-  colors: ['#cf2513', '#cf4c19', '#FA8607', '#FCB033', '#FFF57B'],
+  colors: [
+    '#0040E0',
+    '#4140E0',
+    '#7640E0',
+    '#A540E0',
+    '#FF40E0',
+    '#FF4059',
+    '#FF8340',
+  ],
 })`
   height: 37px;
   width: 37px;

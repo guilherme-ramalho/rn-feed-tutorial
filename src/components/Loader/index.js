@@ -6,7 +6,7 @@ import {Container} from './styles';
 const Loader = () => {
   return (
     <Container>
-      <ActivityIndicator size="large" color="red" />
+      <ActivityIndicator size="large" color="#7640e0" />
     </Container>
   );
 };
