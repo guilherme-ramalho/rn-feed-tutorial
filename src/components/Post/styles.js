@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {Pressable} from 'react-native';
 import LottieView from 'lottie-react-native';
 import HeartAnimation from '../../assets/animations/heart.json';
 
