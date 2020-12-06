@@ -12,20 +12,9 @@ import {
   PostText,
 } from './styles';
 
-const PostInfo = ({post, onLikeButtonTouch}) => {
-  const {likes, owner, text} = post;
+const PostInfo = ({post, liked, likesQty, likeTouchHandler}) => {
+  const {owner, text} = post;
   const {firstName, lastName} = owner;
-  const [liked, setLiked] = useState(false);
-  const [likesQty, setLikesQty] = useState(likes);
-
-  const likeTouchHandler = () => {
-    setLiked(true);
-
-    if (!liked) {
-      setLikesQty(likesQty + 1);
-      onLikeButtonTouch();
-    }
-  };
 
   return (
     <Container>
@@ -58,7 +47,13 @@ const PostInfo = ({post, onLikeButtonTouch}) => {
 
 PostInfo.propTypes = {
   post: PropTypes.shape().isRequired,
-  onLikeButtonTouch: PropTypes.func.isRequired,
+  likeTouchHandler: PropTypes.func.isRequired,
+  liked: PropTypes.bool,
+  likesQty: PropTypes.number.isRequired,
+};
+
+PostInfo.defaultProps = {
+  liked: false,
 };
 
 export default PostInfo;
