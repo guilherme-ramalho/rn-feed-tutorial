@@ -5,7 +5,6 @@ import EmptyListAnimation from '../../assets/animations/emptyList.json';
 
 export const Container = styled.View`
   flex: 1;
-  /* justify-content: center; */
   margin-top: 100px;
   align-items: center;
 `;

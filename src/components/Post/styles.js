@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {Pressable} from 'react-native';
 import LottieView from 'lottie-react-native';
 import HeartAnimation from '../../assets/animations/heart.json';
 
@@ -16,8 +15,6 @@ export const ImageWrapper = styled.View`
 export const PostImage = styled.Image`
   height: 100%;
 `;
-
-export const Touchable = styled(Pressable)``;
 
 export const LikeAnimation = styled(LottieView).attrs({
   source: HeartAnimation,
