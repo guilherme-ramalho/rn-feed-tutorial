@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 
@@ -12,21 +12,37 @@ import {
   PostText,
 } from './styles';
 
-const PostInfo = ({post}) => {
+const PostInfo = ({post, onLikeButtonTouch}) => {
   const {likes, owner, text} = post;
   const {firstName, lastName} = owner;
+  const [liked, setLiked] = useState(false);
+  const [likesQty, setLikesQty] = useState(likes);
+
+  const likeTouchHandler = () => {
+    setLiked(true);
+
+    if (!liked) {
+      setLikesQty(likesQty + 1);
+      onLikeButtonTouch();
+    }
+  };
 
   return (
     <Container>
       <PostButtons>
-        <Icon name="heart" size={24} color="#fff" />
+        <Icon
+          onPress={() => likeTouchHandler()}
+          name="heart"
+          size={24}
+          color={liked ? '#F25758' : '#fff'}
+        />
         <Icon name="comment" size={24} color="#fff" />
         <Icon name="share" size={24} color="#fff" />
       </PostButtons>
       <PostSeparator />
       <Row>
-        <Icon name="heart" size={12} color="red" />
-        <LikesText>{`${likes} likes`}</LikesText>
+        <Icon name="heart" size={12} color="#F25758" />
+        <LikesText>{`${likesQty} likes`}</LikesText>
       </Row>
       <Row>
         <PostText>
@@ -42,6 +58,7 @@ const PostInfo = ({post}) => {
 
 PostInfo.propTypes = {
   post: PropTypes.shape().isRequired,
+  onLikeButtonTouch: PropTypes.func.isRequired,
 };
 
 export default PostInfo;
