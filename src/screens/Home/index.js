@@ -9,13 +9,15 @@ import {Container, ListItemSeparator} from './styles';
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [pager, setPager] = useState({
     current: 0,
     total: 1,
   });
 
   const getPosts = (page = 0, refreshing) => {
-    setIsLoading(true);
+    if (isRefreshing) setIsRefreshing(true);
+    else setIsLoading(true);
 
     fetch(`https://dummyapi.io/data/api/post?page=${page}&limit=10`, {
       headers: {
@@ -25,8 +27,10 @@ const Home = () => {
       .then((response) => response.json())
       .then((response) => {
         if (refreshing) {
+          setIsRefreshing(false);
           setPosts(response.data);
         } else {
+          setIsLoading(false);
           setPosts([...posts, ...response.data]);
         }
 
@@ -34,10 +38,9 @@ const Home = () => {
         setPager(response);
       })
       .catch(() => {
-        alert('Error getting posts');
-      })
-      .finally(() => {
         setIsLoading(false);
+        setIsRefreshing(false);
+        alert('Error getting posts');
       });
   };
 
@@ -46,7 +49,7 @@ const Home = () => {
     const totalPages = Math.ceil(totalItems / limit - 1);
     const nextPage = currentPage + 1;
 
-    if (currentPage < totalPages && !isLoading) {
+    if (currentPage < totalPages && !isLoading && !isRefreshing) {
       getPosts(nextPage);
     }
   };
@@ -67,7 +70,7 @@ const Home = () => {
           data={posts}
           keyExtractor={({id}) => id}
           initialNumToRender={5}
-          refreshing={isLoading}
+          refreshing={isRefreshing}
           onRefresh={() => getPosts(0, true)}
           ItemSeparatorComponent={ListItemSeparator}
           onEndReached={loadMorePosts}
