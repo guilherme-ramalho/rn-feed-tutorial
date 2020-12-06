@@ -1,16 +1,11 @@
 import React, {useState} from 'react';
+import {Pressable} from 'react-native';
 import PropTypes from 'prop-types';
 
 import UserInfo from '../UserInfo';
 import PostInfo from '../PostInfo';
 
-import {
-  Container,
-  PostImage,
-  ImageWrapper,
-  LikeAnimation,
-  Touchable,
-} from './styles';
+import {Container, PostImage, ImageWrapper, LikeAnimation} from './styles';
 
 const Post = ({post}) => {
   const {owner, image, likes} = post;
@@ -42,7 +37,7 @@ const Post = ({post}) => {
   return (
     <Container>
       <UserInfo user={owner} />
-      <Touchable onPress={() => handleImageDoubleTap()}>
+      <Pressable onPress={() => handleImageDoubleTap()}>
         <ImageWrapper>
           <PostImage
             source={{
@@ -58,7 +53,7 @@ const Post = ({post}) => {
             />
           )}
         </ImageWrapper>
-      </Touchable>
+      </Pressable>
       <PostInfo
         post={post}
         likeTouchHandler={likeTouchHandler}

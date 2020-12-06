@@ -17,8 +17,6 @@ export const PostImage = styled.Image`
   height: 100%;
 `;
 
-export const Touchable = styled(Pressable)``;
-
 export const LikeAnimation = styled(LottieView).attrs({
   source: HeartAnimation,
 })`
